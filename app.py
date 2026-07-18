@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
-# Add the directory containing engine.py to the system path
+import sys # Must import this
+import os  # Must import this
+
+# Now you can use them
 sys.path.append(os.path.abspath("modules"))
-# Now you can import it normally
+
 from engine import PathwayEngine
 
 # =====================================================================
