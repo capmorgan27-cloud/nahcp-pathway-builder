@@ -1,5 +1,4 @@
 streamlit==1.32.0
 pandas==2.2.1
-plotly==5.19.0
-matplotlib==3.8.3
+--only-binary=:all: Pillow
 Pillow==10.4.0
