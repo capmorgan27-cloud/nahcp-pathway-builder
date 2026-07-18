@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
-from engine import PathwayEngine  # Corrected missing import!
+# Add the directory containing engine.py to the system path
+sys.path.append(os.path.abspath("modules"))
+# Now you can import it normally
+from engine import PathwayEngine
 
 # =====================================================================
 # 1. Page Configuration & Custom CSS
