@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
-from modules.engine import PathwayEngine
+
+# Add this line right here, before any other Streamlit commands!
+st.set_page_config(layout="wide")
+
+# The rest of your app code goes below...
+st.title("Pathway Builder")
 
 # =====================================================================
 # 1. Page Configuration & Custom CSS
