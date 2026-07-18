@@ -1,15 +1,13 @@
 import streamlit as st
 import pandas as pd
-
-# Add this line right here, before any other Streamlit commands!
-st.set_page_config(layout="wide")
-
-# The rest of your app code goes below...
-st.title("Pathway Builder")
+from engine import PathwayEngine  # Corrected missing import!
 
 # =====================================================================
 # 1. Page Configuration & Custom CSS
 # =====================================================================
+# This MUST be the first Streamlit command!
+st.set_page_config(layout="wide")
+
 st.markdown("""
     <style>
         /* 1. Your Existing Main App Styles */
@@ -18,12 +16,12 @@ st.markdown("""
         div.stButton > button { background-color: #002D62; color: #FFFFFF; border-radius: 5px; }
         div.stButton > button:hover { background-color: #D4AF37; color: #002D62; }
         
-        /* 2. NEW: Seamless Navy Sidebar Background */
+        /* 2. Seamless Navy Sidebar Background */
         [data-testid="stSidebar"] {
             background-color: #002D62 !important;
         }
 
-        /* 3. NEW: Forces all sidebar text to turn white for high contrast */
+        /* 3. Forces all sidebar text to turn white for high contrast */
         [data-testid="stSidebar"] .stText, 
         [data-testid="stSidebar"] p, 
         [data-testid="stSidebar"] h1, 
@@ -33,7 +31,7 @@ st.markdown("""
             color: #FFFFFF !important;
         }
 
-        /* 4. NEW: Tweaks unselected radio buttons so they are visible against the dark background */
+        /* 4. Tweaks unselected radio buttons so they are visible against the dark background */
         [data-testid="stSidebar"] div[role="radiogroup"] label {
             color: rgba(255, 255, 255, 0.8) !important;
         }
@@ -44,6 +42,7 @@ st.markdown("""
 # 2. Initialization
 # =====================================================================
 engine = PathwayEngine()
+
 if 'admin_action' not in st.session_state:
     st.session_state.admin_action = None
 
@@ -382,7 +381,7 @@ def main():
         
     st.sidebar.title("Navigation")
     
-    # ADDED "Career Path Assessment" to the list so users can open it!
+    # Navigation items
     app_mode = st.sidebar.radio("Go to", [
         "Career Path Assessment",
         "Career Pathway Builder", 
