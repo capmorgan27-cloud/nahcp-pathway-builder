@@ -1,0 +1,17 @@
+nahcp_pathway_builder/
+│
+├── app.py                     # Main Streamlit application entry point
+├── requirements.txt           # Environment dependencies
+├── README.md                  # Installation and execution instructions
+│
+├── database/
+│   ├── db_manager.py          # SQLite database connection & CRUD operations
+│   └── seed_data.py           # Script to initialize and populate the database
+│
+├── modules/
+│   ├── engine.py              # AI Pathway logic and recommendation algorithms
+│   ├── student_ui.py          # Dashboard, Progress Bars, and Roadmap components
+│   └── admin_ui.py            # Admin panel for CMS operations and exports
+│
+└── assets/
+    └── style.css              # Custom CSS for Navy Blue and Gold theming
