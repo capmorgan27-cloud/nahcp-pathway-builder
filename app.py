@@ -6,7 +6,8 @@ import os  # Must import this
 # Now you can use them
 sys.path.append(os.path.abspath("modules"))
 
-from engine import PathwayEngine
+#from engine import PathwayEngine
+from modules.engine import PathwayEngine
 
 # =====================================================================
 # 1. Page Configuration & Custom CSS
