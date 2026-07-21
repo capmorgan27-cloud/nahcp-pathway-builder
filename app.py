@@ -1,19 +1,15 @@
 import streamlit as st
 import pandas as pd
-import sys # Must import this
-import os  # Must import this
-
-# Now you can use them
-sys.path.append(os.path.abspath("modules"))
-
-#from engine import PathwayEngine
-from modules.engine import PathwayEngine
+import sys
+import os
 
 # =====================================================================
 # 1. Page Configuration & Custom CSS
 # =====================================================================
-# This MUST be the first Streamlit command!
-st.set_page_config(layout="wide")
+# CRITICAL: This MUST be the first Streamlit command executed.
+# It is safest to place it here BEFORE importing local modules in case 
+# your engine.py file contains Streamlit commands like @st.cache_data.
+st.set_page_config(layout="wide", page_title="NAHCP Pathway Builder")
 
 st.markdown("""
     <style>
@@ -46,7 +42,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =====================================================================
-# 2. Initialization
+# 2. Path Setup & Local Imports
+# =====================================================================
+# Force Python to recognize the root directory on Streamlit Cloud
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+from modules.engine import PathwayEngine
+
+# =====================================================================
+# 3. Initialization
 # =====================================================================
 engine = PathwayEngine()
 
@@ -57,7 +61,7 @@ def change_admin_view(view):
     st.session_state.admin_action = view
 
 # =====================================================================
-# 3. App Views & Pages
+# 4. App Views & Pages
 # =====================================================================
 
 def render_questionnaire():
@@ -378,7 +382,7 @@ def render_admin_panel():
         st.info("The visual pathway editor will go here.")
 
 # =====================================================================
-# 4. Main App Routing Engine
+# 5. Main App Routing Engine
 # =====================================================================
 def main():
     # Centers the transparent logo in the sidebar
